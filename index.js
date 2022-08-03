@@ -1,7 +1,4 @@
 const EC = require('elliptic').ec;
-const KeyPair = require('elliptic/lib/elliptic/ec/key');
-
-console.log(KeyPair);
 
 const ec = new EC('ed25519');
 
@@ -10,7 +7,7 @@ const message = 'foo';
 const key1 = ec.genKeyPair();
 const key2 = ec.genKeyPair();
 
-const mixedKey = new KeyPair(ec, {
+const mixedKey = ec.keyPair({
   priv: key1.getPrivate(),
   pub: key2.getPublic(),
 });
